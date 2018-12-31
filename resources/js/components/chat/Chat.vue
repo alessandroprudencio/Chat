@@ -8,3 +8,13 @@
             <button class="btn btn-success">Enviar</button>
     </div>
 </template>
+<script>
+export default {
+    name:'chat-component'
+}
+</script>
+
+<style>
+
+</style>
+

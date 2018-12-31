@@ -4,9 +4,9 @@ window.Vue = require('vue');
 
 import store from './store/store'
 
-Vue.component('chat-component', require('./components/chat/Chat'));
-Vue.component('users-component', require('./components/chat/Users'));
-Vue.component('message-component', require('./components/chat/Messages'));
+Vue.component('chat-component', require('./components/chat/Chat').dafault);
+Vue.component('users-component', require('./components/chat/Users').dafault);
+Vue.component('message-component', require('./components/chat/Messages').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
