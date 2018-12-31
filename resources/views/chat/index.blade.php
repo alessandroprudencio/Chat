@@ -3,16 +3,17 @@
 @section('content')
 
 <div class="container">
-      <message-component></message-component>
-
     <div class="row">
     
         <div class="col-9">
-        <chat-component></chat-component>
+        <Message></Message>
+
+        <Chat></Chat>        
         </div>
 
         <div class="col-3">
-            <users-component></users-component>
+        <User></User>
+
         </div>
     </div>
 </div>

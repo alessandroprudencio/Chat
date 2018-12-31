@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.5.21"
     },
     "dependencies": {
+        "vue-spinner": "^1.0.3",
         "vuex": "^3.0.1"
     }
 }

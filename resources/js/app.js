@@ -1,20 +1,16 @@
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue'
 
 import store from './store/store'
+import User from './components/chat/Users'
+import Message from './components/chat/Messages'
+import Chat from './components/chat/Chat'
 
-Vue.component('chat-component', require('./components/chat/Chat').dafault);
-Vue.component('users-component', require('./components/chat/Users').dafault);
-Vue.component('message-component', require('./components/chat/Messages').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-const app = new Vue({
+ new Vue({
     store,
-    el: '#app'
+    el: '#app',
+    components:{
+        User,Message,Chat
+    }
 });

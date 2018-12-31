@@ -12,6 +12,11 @@ class ChatController extends Controller
         return view('chat.index');
     }
 
+    public function messages()
+    {
+        $messages = 
+    }
+
     public function store(Request $request)
     {   
         $message = auth()->user()->messages()->create([
