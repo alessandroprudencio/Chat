@@ -6,7 +6,7 @@
     <div class="row">
     
         <div class="col-9">
-        <Message></Message>
+        <Messages></Messages>
 
         <Chat></Chat>        
         </div>

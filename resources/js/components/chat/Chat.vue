@@ -1,9 +1,7 @@
 <template>
     <div>
-        <div class="form-group">
-            <textarea @keydown="keydownMessage" v-model="body" placeholder="Sua mensagem" class="form-control"></textarea>
-        </div>
-            <button :disabled="loading || !this.body || this.body.trim() ==''" @click.prevent="sendMessage" class="btn btn-success">
+            <textarea @keydown="keydownMessage" v-model="body" placeholder="Sua mensagem"></textarea>
+            <button :disabled="loading || !this.body || this.body.trim() ==''" @click.prevent="sendMessage" class="btn btn-primary">
                 <sync-loader 
                 :loading="loading" 
                 color="#FFF" 
@@ -34,6 +32,7 @@ export default {
                 }
         },
         sendMessage(){
+            
             if(!this.body || this.body.trim() =='' || this.loading){
                 return
             }else{
@@ -41,6 +40,7 @@ export default {
                 this.$store.dispatch('storeMessage',{body:this.body})
                     .then(()=> this.body = '')
                     .finally(()=>this.loading =false)
+                    
             }
            
         }
@@ -51,9 +51,20 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .float-left{
     float:left   
+}
+textarea{   
+    width: 80%;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    padding: 6px;
+    max-width: 80%;
+    float:left;
+}
+button{
+    margin: 12px 6px;
 }
 </style>
 
