@@ -1887,6 +1887,7 @@ __webpack_require__.r(__webpack_exports__);
     loadMessage: function loadMessage() {
       var _this2 = this;
 
+      console.log(this.message);
       this.loading = true;
       this.$store.dispatch('loadMessage').finally(function () {
         _this2.loading = false;
@@ -1934,10 +1935,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
     users: function users() {
-      return this.$store.state.chat.users;
+      return this.$store.state.chat.users; //retorna usuarios
     }
   }
 });
@@ -6272,7 +6275,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.message[data-v-708f0ef0]{\r\n    height:400px;\r\n    max-height:400px;\r\n    overflow-x:hidden;\r\n    overflow-y:auto;\n}\nimg[data-v-708f0ef0]{\r\n    max-width: 60px;\r\n    min-width: 60px;\r\n  \r\n    border-radius: 100%;\r\n    float:left;\n}\n.chat-message[data-v-708f0ef0]{\r\n    float:left;\r\n    width: 100%;\r\n    margin:10px 0;\n}\n.chat-info[data-v-708f0ef0]{\r\n       float:left;\r\n    width: 100%;\n}\n.message-body[data-v-708f0ef0]{\r\n    background: white;\r\n    padding:12px;\r\n    border-radius: 5px;\r\n    box-shadow: 5px 5px 5px #aaaaaa;\r\n    position:relative;\r\n    margin: 24px  9px 0 72px;\n}\n.message-body.owner[data-v-708f0ef0]{\r\n    background:  #b3ffe6;\n}\n.message-body[data-v-708f0ef0]:before{\r\n    position:absolute;\r\n    right:100%;\r\n    top:15px;\r\n    border:solid transparent;\r\n    border-right: #fff  ;\r\n    content: ' ';\r\n    height:0;\r\n    width:0;\r\n    pointer-events: none;\r\n    border-width: 6px;\n}\n.chat-info span[data-v-708f0ef0]{\r\n    margin-right: 1%;\r\n    float: right;\n}\r\n", ""]);
+exports.push([module.i, "\n.message[data-v-708f0ef0]{\r\n    height:400px;\r\n    max-height:400px;\r\n    overflow-x:hidden;\r\n    overflow-y:auto;\n}\nimg[data-v-708f0ef0]{\r\n    max-width: 60px;\r\n    min-width: 60px;\r\n    border:1px solid #fff;\r\n    border-radius: 100%;\r\n    float:left;\n}\n.chat-message[data-v-708f0ef0]{\r\n    float:left;\r\n    width: 100%;\r\n    margin:10px 0;\n}\n.chat-info[data-v-708f0ef0]{\r\n       float:left;\r\n    width: 100%;\n}\n.message-body[data-v-708f0ef0]{\r\n    background: white;\r\n    padding:12px;\r\n    border-radius: 5px;\r\n    box-shadow: 5px 5px 5px #aaaaaa;\r\n    position:relative;\r\n    margin: 24px  9px 0 72px;\n}\n.message-body.owner[data-v-708f0ef0]{\r\n    background:  #b3ffe6;\n}\n.message-body[data-v-708f0ef0]:before{\r\n    position:absolute;\r\n    right:100%;\r\n    top:15px;\r\n    border:solid transparent;\r\n    border-right: #fff  ;\r\n    content: ' ';\r\n    height:0;\r\n    width:0;\r\n    pointer-events: none;\r\n    border-width: 6px;\n}\n.chat-info span[data-v-708f0ef0]{\r\n    margin-right: 1%;\r\n    float: right;\n}\r\n", ""]);
 
 // exports
 
@@ -48052,8 +48055,8 @@ var render = function() {
       _vm._l(_vm.messages, function(message) {
         return _c("div", { key: message.id, staticClass: "chat-message" }, [
           _c("div", { staticClass: "chat-info" }, [
-            _c("i", { attrs: { id: "nomeUser" } }, [
-              _vm._v(_vm._s(message.user.name))
+            _c("i", [
+              _vm._v(_vm._s(message.owner == true ? "Eu" : message.user.name))
             ]),
             _vm._v(" "),
             _c("span", [_c("i", [_vm._v(_vm._s(message.user.created_at))])])
@@ -48121,24 +48124,26 @@ var render = function() {
       { staticClass: "usuarios scroll" },
       _vm._l(_vm.users, function(usuario) {
         return _c("div", { key: usuario.id, staticClass: "usuario" }, [
-          usuario.image
-            ? _c("div", { staticClass: "usuario-img" }, [
-                _c("img", {
-                  attrs: {
-                    src: "/storage/users/" + usuario.image,
-                    alt: usuario.name
-                  }
-                })
+          _vm.users.length > 1
+            ? _c("div", [
+                usuario.image
+                  ? _c("div", { staticClass: "usuario-img" }, [
+                      _c("img", {
+                        attrs: {
+                          src: "/storage/users/" + usuario.image,
+                          alt: usuario.name
+                        }
+                      })
+                    ])
+                  : _c("div", { staticClass: "usuario-img" }, [
+                      _c("img", {
+                        attrs: { src: "/img/user.png", alt: usuario.name }
+                      })
+                    ]),
+                _vm._v(" "),
+                _c("strong", [_vm._v(_vm._s(usuario.name))])
               ])
-            : _c("div", { staticClass: "usuario-img" }, [
-                _c("img", {
-                  attrs: { src: "/img/user.png", alt: usuario.name }
-                })
-              ]),
-          _vm._v(" "),
-          _c("strong", [
-            _vm._v(_vm._s(_vm.users.length == 1 ? "Eu" : usuario.name))
-          ])
+            : _vm._e()
         ])
       }),
       0

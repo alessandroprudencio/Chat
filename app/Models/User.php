@@ -11,20 +11,15 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name', 'email', 'password', 'image', 
-    ];
+        'name', 'email', 'password', 'image'
+    ];    
+    protected $appends = ['owner'];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+
+    public function getOwnerAttribute(){
+        return $this->user_id == auth()->user()->id; // o valor da coluna user_Id na tabela message e iqual ao usuario logado        
+    }
     protected $hidden = [
         'password', 'remember_token',
     ];

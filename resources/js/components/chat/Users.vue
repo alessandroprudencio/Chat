@@ -3,14 +3,16 @@
         <h3>{{users.length == 1 ? 'Ninguém Online': users.length + ' online'}}</h3>
         <div class="usuarios scroll">
             <div class="usuario" v-for="usuario in users" :key="usuario.id">
-                <div class="usuario-img" v-if="usuario.image">
-                    <img :src="`/storage/users/${usuario.image}`" :alt="usuario.name"/>
-                </div>
-                <div class="usuario-img" v-else >
-                      <img src="/img/user.png" :alt="usuario.name"/>                   
+                <div v-if="users.length >1">
+                    <div class="usuario-img" v-if="usuario.image">
+                        <img :src="`/storage/users/${usuario.image}`" :alt="usuario.name"/>
+                    </div>
+                    <div class="usuario-img" v-else >
+                        <img src="/img/user.png" :alt="usuario.name"/>                   
+                    </div>
+                    <strong>{{usuario.name}}</strong>
                 </div>
                
-                <strong>{{users.length == 1 ? 'Eu': usuario.name}}</strong>
             </div>
         </div>
     </div>
@@ -20,7 +22,8 @@
 export default {
     computed:{
         users(){
-            return this.$store.state.chat.users
+            return this.$store.state.chat.users //retorna usuarios
+            
         }
     }
 }

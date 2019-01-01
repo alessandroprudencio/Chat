@@ -7,7 +7,7 @@
 
         <div class="chat-message" v-for="message in messages" :key="message.id">
             <div class="chat-info">
-                    <i id="nomeUser">{{message.user.name}}</i>
+                    <i>{{message.owner == true ? 'Eu' : message.user.name}}</i>
                     <span><i>{{message.user.created_at}}</i></span>
             </div>
 
@@ -56,6 +56,8 @@ export default {
         },
 
         loadMessage(){
+            console.log(this.message)
+
             this.loading = true
             this.$store.dispatch('loadMessage')
                 .finally(()=>{
@@ -85,7 +87,7 @@ export default {
 img{
     max-width: 60px;
     min-width: 60px;
-  
+    border:1px solid #fff;
     border-radius: 100%;
     float:left;
 }
