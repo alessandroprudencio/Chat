@@ -19,7 +19,7 @@
             </div>
             
             
-            <div :class="['message-body', {'owner':message.owner}]">
+            <div :class="['message-body ', {'owner':message.owner}]">
                 {{message.body}}
             </div>
 
@@ -90,6 +90,7 @@ img{
     border:1px solid #fff;
     border-radius: 100%;
     float:left;
+    padding: 1px;
 }
 .chat-message{
     float:left;

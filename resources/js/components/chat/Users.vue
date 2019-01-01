@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>{{users.length == 1 ? 'Ninguém Online': users.length + ' online'}}</h3>
+        <h3>{{users.length == 1 || users.length == 0 ? 'Ninguém Online': users.length + ' online'}}</h3>
         <div class="usuarios scroll">
             <div class="usuario" v-for="usuario in users" :key="usuario.id">
                 <div v-if="users.length >1">

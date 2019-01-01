@@ -6275,7 +6275,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.message[data-v-708f0ef0]{\r\n    height:400px;\r\n    max-height:400px;\r\n    overflow-x:hidden;\r\n    overflow-y:auto;\n}\nimg[data-v-708f0ef0]{\r\n    max-width: 60px;\r\n    min-width: 60px;\r\n    border:1px solid #fff;\r\n    border-radius: 100%;\r\n    float:left;\n}\n.chat-message[data-v-708f0ef0]{\r\n    float:left;\r\n    width: 100%;\r\n    margin:10px 0;\n}\n.chat-info[data-v-708f0ef0]{\r\n       float:left;\r\n    width: 100%;\n}\n.message-body[data-v-708f0ef0]{\r\n    background: white;\r\n    padding:12px;\r\n    border-radius: 5px;\r\n    box-shadow: 5px 5px 5px #aaaaaa;\r\n    position:relative;\r\n    margin: 24px  9px 0 72px;\n}\n.message-body.owner[data-v-708f0ef0]{\r\n    background:  #b3ffe6;\n}\n.message-body[data-v-708f0ef0]:before{\r\n    position:absolute;\r\n    right:100%;\r\n    top:15px;\r\n    border:solid transparent;\r\n    border-right: #fff  ;\r\n    content: ' ';\r\n    height:0;\r\n    width:0;\r\n    pointer-events: none;\r\n    border-width: 6px;\n}\n.chat-info span[data-v-708f0ef0]{\r\n    margin-right: 1%;\r\n    float: right;\n}\r\n", ""]);
+exports.push([module.i, "\n.message[data-v-708f0ef0]{\r\n    height:400px;\r\n    max-height:400px;\r\n    overflow-x:hidden;\r\n    overflow-y:auto;\n}\nimg[data-v-708f0ef0]{\r\n    max-width: 60px;\r\n    min-width: 60px;\r\n    border:1px solid #fff;\r\n    border-radius: 100%;\r\n    float:left;\r\n    padding: 1px;\n}\n.chat-message[data-v-708f0ef0]{\r\n    float:left;\r\n    width: 100%;\r\n    margin:10px 0;\n}\n.chat-info[data-v-708f0ef0]{\r\n       float:left;\r\n    width: 100%;\n}\n.message-body[data-v-708f0ef0]{\r\n    background: white;\r\n    padding:12px;\r\n    border-radius: 5px;\r\n    box-shadow: 5px 5px 5px #aaaaaa;\r\n    position:relative;\r\n    margin: 24px  9px 0 72px;\n}\n.message-body.owner[data-v-708f0ef0]{\r\n    background:  #b3ffe6;\n}\n.message-body[data-v-708f0ef0]:before{\r\n    position:absolute;\r\n    right:100%;\r\n    top:15px;\r\n    border:solid transparent;\r\n    border-right: #fff  ;\r\n    content: ' ';\r\n    height:0;\r\n    width:0;\r\n    pointer-events: none;\r\n    border-width: 6px;\n}\n.chat-info span[data-v-708f0ef0]{\r\n    margin-right: 1%;\r\n    float: right;\n}\r\n", ""]);
 
 // exports
 
@@ -48077,7 +48077,7 @@ var render = function() {
                 })
               ]),
           _vm._v(" "),
-          _c("div", { class: ["message-body", { owner: message.owner }] }, [
+          _c("div", { class: ["message-body ", { owner: message.owner }] }, [
             _vm._v("\n            " + _vm._s(message.body) + "\n        ")
           ])
         ])
@@ -48112,7 +48112,7 @@ var render = function() {
     _c("h3", [
       _vm._v(
         _vm._s(
-          _vm.users.length == 1
+          _vm.users.length == 1 || _vm.users.length == 0
             ? "Ninguém Online"
             : _vm.users.length + " online"
         )
