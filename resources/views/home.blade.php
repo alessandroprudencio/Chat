@@ -15,6 +15,12 @@
                     @endif
 
                     Bem vindo ao Chat Real Time desenvolvido por mim Alessandro Prudencio utilizando vuejs e laravel...
+                    
+                    @if(session('alert'))
+                    <div class="alert alert-success">
+                    {{  session('status')}}
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

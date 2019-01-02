@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\User;
 use Socialite;
-use Auth;
 
 class LoginController extends Controller
 {
@@ -25,25 +26,19 @@ class LoginController extends Controller
     }
     public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver($provider)->user();
+        try{
+            $user = Socialite::driver($provider)->user();
+            $createdUser = User::firstOrCreate([
+                'email'=>$user->getEmail()
+            ],[
+                'name'=>$user->getName()
+            ]);
 
-        $authUser = $this->findOrCreateUser($user, $provider);
-        Auth::login($authUser, true);
-        return redirect($this->redirectTo);
-    }
+            auth()->login($createdUser);
+            return redirect('/home')->with('alert',"bievenaldo");
 
-    public function findOrCreateUser($user, $provider)
-    {
-        $authUser = User::where('provider_id', $user->id)->first();
-        if ($authUser) {
-            return $authUser;
+        }catch(\GuzzleHttp\Exception\ClientException $e){
+            dd($e);
         }
-        return User::create([
-            'name'     => $user->name,
-            'email'    => $user->email,
-            'provider' => $provider,
-            'provider_id' => $user->id
-        ]);
-    
     }
 }
