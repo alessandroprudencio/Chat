@@ -35,7 +35,7 @@ class LoginController extends Controller
             ]);
 
             auth()->login($createdUser);
-            return redirect('/home')->with('alert',"bievenaldo");
+            return redirect('/');
 
         }catch(\GuzzleHttp\Exception\ClientException $e){
             dd($e);
