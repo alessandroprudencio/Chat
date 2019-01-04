@@ -4,15 +4,15 @@
 # {{ $greeting }}
 @else
 @if ($level === 'error')
-# @lang('Whoops!')
+# @lang('oops!')
 @else
-# @lang('Hello!')
+# @lang('Ola!')
 @endif
 @endif
 
 {{-- Intro Lines --}}
 @foreach ($introLines as $line)
-{{ $line }}
+{{ 'Por favor, clique no botão abaixo para verificar o seu endereço de email' }}
 
 @endforeach
 
@@ -29,13 +29,14 @@
     }
 ?>
 @component('mail::button', ['url' => $actionUrl, 'color' => $color])
-{{ $actionText }}
+{{ 'Verificar Email' }}
 @endcomponent
 @endisset
 
 {{-- Outro Lines --}}
 @foreach ($outroLines as $line)
-{{ $line }}
+{{ 'Se você não criou uma conta, nenhuma ação adicional é necessária.' }}
+
 
 @endforeach
 
